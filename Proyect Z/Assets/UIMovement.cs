@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIMovement : MonoBehaviour
 {
@@ -30,12 +31,12 @@ public class UIMovement : MonoBehaviour
     }
     public void ActivateSpaceSelector()
     {           
-        LeanTween.move(buttons, buttonsPosition2, 1f);
+        LeanTween.move(buttons, buttonsPosition2, 0.5f);
         LeanTween.move(spaceShipZone.gameObject, newSpaceShipPosition2, 0.5f);
     }
     public void DeactivateSpaceSelector()
     {
-        LeanTween.move(buttons, buttonsPosition1, 1);
+        LeanTween.move(buttons, buttonsPosition1, 0.5f);
         LeanTween.move(spaceShipZone.gameObject, newSpaceShipPosition1, 0.5f);
         SpaceShips ship = shipsSelector.GetShip();
         SaveSystem.SaveShips(ship);
@@ -46,6 +47,6 @@ public class UIMovement : MonoBehaviour
     }
     public void StartGame()
     {
-
+        SceneManager.LoadScene(1);
     }
 }
