@@ -6,13 +6,14 @@ public class PlayerGun : MonoBehaviour
 {
     public PlayerBullet bullet;
     Vector2 direction;
-    public float reload;
+    [HideInInspector] public float reload;
 
-    float shootLoad; 
+    float shootLoad;
+    GameManager gm;
 
     void Start()
     {
-        
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     public void Shoot()
@@ -27,6 +28,9 @@ public class PlayerGun : MonoBehaviour
             GameObject go = Instantiate(bullet.gameObject, transform.position, Quaternion.identity);
             PlayerBullet goBullet = go.GetComponent<PlayerBullet>();
             goBullet.direction = direction;
+            goBullet.SetBulletDmg(Mathf.Abs(gm.GetEnergy()));
+
+            print("asfasd");
         }
     }
 }

@@ -5,13 +5,16 @@ using UnityEngine;
 public class PlayerBullet : MonoBehaviour
 {
     public float speed;
+    public float bulletDestroy;
     public Vector2 direction = new Vector2(1, 0);
 
     private Vector2 velocity;
 
+    private int bulletDmg;
+
     void Start()
     {
-        Destroy(gameObject, 3);
+        Destroy(gameObject, bulletDestroy);
     }
 
     void Update()
@@ -26,5 +29,19 @@ public class PlayerBullet : MonoBehaviour
         pos += velocity * Time.fixedDeltaTime;
 
         transform.position = pos;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.transform.tag == "Enemy")
+        {
+            collision.transform.GetComponent<AILife>().SetLife(-bulletDmg);
+            Destroy(gameObject); 
+        }
+    }
+
+    public void SetBulletDmg(int i)
+    {
+        bulletDmg = i;
     }
 }

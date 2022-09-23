@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class GunControl : MonoBehaviour
 {
-    public float reload;
+    [HideInInspector] public float reload;
 
     PlayerGun[] guns;
 
     bool shoot;
 
-    void Start()
+    void Awake()
     {
         guns = transform.GetComponentsInChildren<PlayerGun>();
-
-        ChangeReload(reload);
     }
 
     private void FixedUpdate()
@@ -36,5 +34,10 @@ public class GunControl : MonoBehaviour
         {
             gun.reload = e;
         }
+    }
+
+    public PlayerGun[] GetPlayerGun()
+    {
+        return guns;
     }
 }
