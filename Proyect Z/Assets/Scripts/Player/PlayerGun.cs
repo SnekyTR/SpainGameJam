@@ -25,7 +25,7 @@ public class PlayerGun : MonoBehaviour
             direction = (transform.rotation * Vector2.right).normalized;
             shootLoad = 0;
 
-            GameObject go = Instantiate(bullet.gameObject, transform.position, Quaternion.identity);
+            GameObject go = Instantiate(bullet.gameObject, transform.position, transform.rotation);
             PlayerBullet goBullet = go.GetComponent<PlayerBullet>();
             goBullet.direction = direction;
             goBullet.SetBulletDmg(Mathf.Abs(gm.GetEnergy()));
