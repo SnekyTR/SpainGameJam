@@ -21,14 +21,18 @@ public class ShipsSelector : MonoBehaviour
 
     private Button upBut;
     private Button downBut;
+
+    [SerializeField] private UpgradesMenu upgradesMenu;
     private void Awake()
     {
         Assign();
-        AssignSpaceShip(0);
+        
     }
     private void Start()
     {
-
+        upgradesMenu = GameObject.Find("Upgrades").GetComponent<UpgradesMenu>();
+        AssignSpaceShip(0);
+        
     }
     public void ChangeShip(int i)
     {
@@ -78,10 +82,10 @@ public class ShipsSelector : MonoBehaviour
     {
         DeselectShip();
         SpaceShips selectedShip = (SpaceShips)ships[i];
+        Weapons selectedWeapon = (Weapons)upgradesMenu.weaponSelected;
         shipImage.sprite = selectedShip.artwork;
-        for(int a = 0; a < selectedShip.dmg; a++)
+        for(int a = 0; a < selectedWeapon.dmg; a++)
         {
-            print(dmg.Length);
             dmg[a].SetActive(true);
         }
         for (int a = 0; a < selectedShip.hp; a++)
@@ -92,7 +96,7 @@ public class ShipsSelector : MonoBehaviour
         {
             speed[a].SetActive(true);
         }
-        for (int a = 0; a < selectedShip.attackSpeed; a++)
+        for (int a = 0; a < selectedWeapon.attackSpeed; a++)
         {
             attackSpeed[a].SetActive(true);
         }
@@ -129,5 +133,13 @@ public class ShipsSelector : MonoBehaviour
     public SpaceShips GetShip()
     {
         return (SpaceShips)ships[actualship];
+    }
+    public void UpdateStatsWeapon(ScriptableObject weapon)
+    {
+        Weapons actualWeap = (Weapons)weapon;
+        for (int a = 0; a < actualWeap.dmg; a++)
+        {
+            dmg[a].SetActive(true);
+        }
     }
 }

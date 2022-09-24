@@ -19,3 +19,4 @@ MonoBehaviour:
   attackSpeed: 5
   selected: 0
   weapName: 
+  artwork: {fileID: 21300000, guid: cf1dddae4b1c34e55ab689899cea4dd1, type: 3}
