@@ -20,3 +20,4 @@ MonoBehaviour:
   selected: 0
   weapName: 
   artwork: {fileID: 21300000, guid: aa50576929e194f0691c08fb366ba7af, type: 3}
+  actualWeapon: 0

@@ -17,6 +17,7 @@ MonoBehaviour:
   hp: 3
   speed: 4
   attackSpeed: 5
-  selected: 0
+  selected: 1
   weapName: 
   artwork: {fileID: 21300000, guid: cf1dddae4b1c34e55ab689899cea4dd1, type: 3}
+  actualWeapon: 0

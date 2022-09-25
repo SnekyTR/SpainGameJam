@@ -15,6 +15,7 @@ public class UpgradesMenu : MonoBehaviour
     private Image upgradeImage;
 
     ShipsSelector shipsSelector;
+    private int weapon;
     // Start is called before the first frame update
     void Start()
     {
@@ -66,14 +67,21 @@ public class UpgradesMenu : MonoBehaviour
     {
         if(weapNumber == 0)
         {
+            weapon = weapNumber;
             LeanTween.move(upgrade1.transform.GetChild(0).gameObject, upgrade1.transform.GetChild(1).position, 0);
             upgrade1.transform.GetChild(0).gameObject.SetActive(false);
             Weapons weap = (Weapons)weapons[weapNumber];
+
             upgradeImage.enabled = true;
             upgradeImage.sprite = weap.artwork;
             weaponSelected = weapons[weapNumber];
-
+            SpaceShips selectedShip= shipsSelector.GetActualSpaceShip();
+            selectedShip.actualWeapon = weapNumber;
+            print("Se ha cambiado el actualweapon");
         }
-        
+    }
+    public int GetWeapNumber()
+    {
+        return weapon;
     }
 }

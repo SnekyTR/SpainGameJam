@@ -9,11 +9,12 @@ public class ShipsSelector : MonoBehaviour
 {
 
     [SerializeField] private ScriptableObject[] ships;
-    private TextMeshProUGUI shipName;
+    [HideInInspector]public TextMeshProUGUI shipName;
     [SerializeField] private GameObject[] dmg;
     [SerializeField] private GameObject[] hp;
     [SerializeField] private GameObject[] speed;
     [SerializeField] private GameObject[] attackSpeed;
+    private SpaceShips selectedShip;
     private Image shipImage;
 
     private int actualship = 0;
@@ -38,6 +39,7 @@ public class ShipsSelector : MonoBehaviour
     {
 
         actualship += (i);
+
         if(actualship >= 0)
         {
             if(actualship < ships.Length)
@@ -81,8 +83,10 @@ public class ShipsSelector : MonoBehaviour
     private void AssignSpaceShip(int i)
     {
         DeselectShip();
-        SpaceShips selectedShip = (SpaceShips)ships[i];
+        selectedShip = (SpaceShips)ships[i];
         Weapons selectedWeapon = (Weapons)upgradesMenu.weaponSelected;
+        int weaponNumber = upgradesMenu.GetWeapNumber();
+        selectedShip.actualWeapon = weaponNumber;   
         shipImage.sprite = selectedShip.artwork;
         for(int a = 0; a < selectedWeapon.dmg; a++)
         {
@@ -108,6 +112,10 @@ public class ShipsSelector : MonoBehaviour
         selectedShip.selected = true;
         oldShip = i;
         //shipImage.sprite = selectedShip.artwork;
+    }
+    public SpaceShips GetActualSpaceShip()
+    {
+        return selectedShip;
     }
     private void DeselectShip()
     {

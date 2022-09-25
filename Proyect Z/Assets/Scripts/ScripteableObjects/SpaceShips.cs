@@ -13,4 +13,5 @@ public class SpaceShips : ScriptableObject
     public bool selected;
     public string weapName;
     public Sprite artwork;
+    public int actualWeapon;
 }

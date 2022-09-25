@@ -10,6 +10,7 @@ public class ShipsData
     public int health;
     public float speed;
     public bool selected;
+    public int weapon;
     public ShipsData(SpaceShips ship)
     {
         shipName = ship.shipName;
@@ -17,5 +18,6 @@ public class ShipsData
         health = ship.hp;
         speed = ship.speed;
         selected = ship.selected;
+        weapon = ship.actualWeapon;
     }
 }
