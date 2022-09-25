@@ -11,6 +11,9 @@ public class PlayerShip : MonoBehaviour
     bool moveRight;
     bool moveLeft;
 
+    [SerializeField]
+    private int life;
+
     void Start()
     {
 
@@ -58,5 +61,10 @@ public class PlayerShip : MonoBehaviour
         if (pos.y >= 4.4f) pos.y = 4.4f;
 
         transform.position = pos;
+    }
+
+    public void SetLife(int i)
+    {
+        life += i;
     }
 }

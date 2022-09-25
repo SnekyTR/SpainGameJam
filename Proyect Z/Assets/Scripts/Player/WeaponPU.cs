@@ -153,6 +153,22 @@ public class WeaponPU : MonoBehaviour
                 gun.bullet = newBullets[1];
             }
         }
+
+        if (weaponType == 4)
+        {
+            gunC[0].transform.rotation = Quaternion.Euler(0, 0, 0);
+            gunC[1].transform.rotation = Quaternion.Euler(0, 0, 45);
+        }
+
+        foreach (PlayerGun gun in gunC[0].GetPlayerGun())
+        {
+            gun.SetShootLoad(0);
+        }
+
+        foreach (PlayerGun gun in gunC[1].GetPlayerGun())
+        {
+            gun.SetShootLoad(0);
+        }
     }
 
     private void PUExtra02()
@@ -173,6 +189,28 @@ public class WeaponPU : MonoBehaviour
             {
                 gun.bullet = newBullets[2];
             }
+        }
+
+        if (weaponType == 4)
+        {
+            gunC[0].transform.rotation = Quaternion.Euler(0, 0, 0);
+            gunC[1].transform.rotation = Quaternion.Euler(0, 0, 30);
+            gunC[2].transform.rotation = Quaternion.Euler(0, 0, 60);
+        }
+
+        foreach (PlayerGun gun in gunC[0].GetPlayerGun())
+        {
+            gun.SetShootLoad(0);
+        }
+
+        foreach (PlayerGun gun in gunC[1].GetPlayerGun())
+        {
+            gun.SetShootLoad(0);
+        }
+
+        foreach (PlayerGun gun in gunC[2].GetPlayerGun())
+        {
+            gun.SetShootLoad(0);
         }
     }
 

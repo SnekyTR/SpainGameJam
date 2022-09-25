@@ -35,32 +35,13 @@ public class AIBullet : MonoBehaviour
     {
         if(collision.transform.tag == "Player")
         {
-            PlayerCollision();
+            collision.gameObject.GetComponent<PlayerShip>().SetLife(-1);
             Destroy(gameObject);
         }
     }
 
     private void PlayerCollision()
     {
-        GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-
-        if (operation == 1)
-        {
-            int newValue = gm.GetEnergy() + amount;
-
-            gm.SetEnergy(newValue);
-        }
-        else if(operation == 2)
-        {
-
-        }
-        else if(operation == 3)
-        {
-
-        }
-        else
-        {
-
-        }
+        
     }
 }

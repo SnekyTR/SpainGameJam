@@ -28,9 +28,16 @@ public class PlayerGun : MonoBehaviour
             GameObject go = Instantiate(bullet.gameObject, transform.position, transform.rotation);
             PlayerBullet goBullet = go.GetComponent<PlayerBullet>();
             goBullet.direction = direction;
-            goBullet.SetBulletDmg(Mathf.Abs(gm.GetEnergy()));
-
-            print("asfasd");
         }
+    }
+
+    public void SetShootLoad(float e)
+    {
+        shootLoad = e;
+    }
+
+    public float GetShootLoad()
+    {
+        return shootLoad;
     }
 }

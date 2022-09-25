@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3724613175281751087}
   - component: {fileID: 9088788447547514941}
   - component: {fileID: 227655841085725822}
+  - component: {fileID: 5537257609900237215}
   m_Layer: 8
   m_Name: Bullet
   m_TagString: Untagged
@@ -96,7 +97,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -132,6 +133,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5537257609900237215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4476960948447284319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 257fa3bfc4947ea40890b4060cd6c365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDmg: 25
 --- !u!1 &7434797592062108185
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,6 +158,7 @@ GameObject:
   - component: {fileID: 7689675902878452312}
   - component: {fileID: 2512236548139504023}
   - component: {fileID: 497195726423621251}
+  - component: {fileID: 6188069641925204151}
   m_Layer: 8
   m_Name: Bullet
   m_TagString: Untagged
@@ -228,7 +243,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -264,6 +279,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6188069641925204151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7434797592062108185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 257fa3bfc4947ea40890b4060cd6c365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDmg: 25
 --- !u!1 &8195765390920704012
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,6 +304,7 @@ GameObject:
   - component: {fileID: 8195765390920704002}
   - component: {fileID: 576868434325719201}
   - component: {fileID: 3392808848933964760}
+  - component: {fileID: 5149849099830410010}
   m_Layer: 8
   m_Name: Bullet
   m_TagString: Untagged
@@ -360,7 +389,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -396,6 +425,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5149849099830410010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8195765390920704012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 257fa3bfc4947ea40890b4060cd6c365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDmg: 25
 --- !u!1 &8195765391618403974
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,7 +450,7 @@ GameObject:
   - component: {fileID: 8195765391618403972}
   - component: {fileID: 8195765391618403975}
   m_Layer: 8
-  m_Name: Bullet05
+  m_Name: Bullet05.3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -448,6 +490,7 @@ MonoBehaviour:
   speed: 10
   bulletDestroy: 3
   direction: {x: 1, y: 0}
+  baseDmg: 0
 --- !u!114 &8195765391618403975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,6 +516,7 @@ GameObject:
   - component: {fileID: 8195765392165905581}
   - component: {fileID: 7875939607895526990}
   - component: {fileID: 2265821410867741063}
+  - component: {fileID: 3609839430659485601}
   m_Layer: 8
   m_Name: Bullet
   m_TagString: Untagged
@@ -557,7 +601,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -593,3 +637,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3609839430659485601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8195765392165905583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 257fa3bfc4947ea40890b4060cd6c365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDmg: 25

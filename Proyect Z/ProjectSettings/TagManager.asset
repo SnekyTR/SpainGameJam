@@ -10,6 +10,7 @@ TagManager:
   - CReloadx2
   - CReloadx3
   - CReloadx4
+  - LifePart
   layers:
   - Default
   - TransparentFX

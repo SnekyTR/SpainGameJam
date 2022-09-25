@@ -8,12 +8,20 @@ public class PlayerBullet : MonoBehaviour
     public float bulletDestroy;
     public Vector2 direction = new Vector2(1, 0);
 
+    public int baseDmg;
+
     private Vector2 velocity;
 
     private int bulletDmg;
 
+    public GameObject explObj;
+
     void Start()
     {
+        GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        SetBulletDmg(gm.GetEnergy());
+
         Destroy(gameObject, bulletDestroy);
     }
 
@@ -35,13 +43,18 @@ public class PlayerBullet : MonoBehaviour
     {
         if(collision.transform.tag == "Enemy")
         {
+            if(explObj != null)
+            {
+                Instantiate(explObj, transform.position, Quaternion.identity);
+            }
+
             collision.transform.GetComponent<AILife>().SetLife(-bulletDmg);
             Destroy(gameObject); 
         }
     }
 
-    public void SetBulletDmg(int i)
+    private void SetBulletDmg(int i)
     {
-        bulletDmg = i;
+        bulletDmg = (int)(baseDmg * (1 + (i/50)));
     }
 }

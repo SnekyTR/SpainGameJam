@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7417648322170435599}
   - component: {fileID: 1034047192433432552}
   - component: {fileID: 6032017602894201136}
+  - component: {fileID: 6864301631137822325}
   m_Layer: 8
   m_Name: Bullet
   m_TagString: Untagged
@@ -96,7 +97,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -132,6 +133,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6864301631137822325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985304697240227839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 257fa3bfc4947ea40890b4060cd6c365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDmg: 25
 --- !u!1 &8195765390920704012
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,6 +158,7 @@ GameObject:
   - component: {fileID: 8195765390920704002}
   - component: {fileID: 576868434325719201}
   - component: {fileID: 1269321860126399107}
+  - component: {fileID: 4953172906103562367}
   m_Layer: 8
   m_Name: Bullet
   m_TagString: Untagged
@@ -228,7 +243,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -264,6 +279,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4953172906103562367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8195765390920704012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 257fa3bfc4947ea40890b4060cd6c365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDmg: 25
 --- !u!1 &8195765391618403974
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,7 +304,7 @@ GameObject:
   - component: {fileID: 8195765391618403972}
   - component: {fileID: 8195765391618403975}
   m_Layer: 8
-  m_Name: Bullet05
+  m_Name: Bullet05.2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -315,6 +343,7 @@ MonoBehaviour:
   speed: 10
   bulletDestroy: 3
   direction: {x: 1, y: 0}
+  baseDmg: 0
 --- !u!114 &8195765391618403975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,6 +369,7 @@ GameObject:
   - component: {fileID: 8195765392165905581}
   - component: {fileID: 7875939607895526990}
   - component: {fileID: 6122286533479052359}
+  - component: {fileID: 2541434096322997302}
   m_Layer: 8
   m_Name: Bullet
   m_TagString: Untagged
@@ -424,7 +454,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -460,3 +490,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2541434096322997302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8195765392165905583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 257fa3bfc4947ea40890b4060cd6c365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDmg: 25
