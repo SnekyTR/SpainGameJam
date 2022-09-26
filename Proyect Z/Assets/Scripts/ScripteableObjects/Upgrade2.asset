@@ -9,17 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2b9087c747e15241b4291121b1c6be4, type: 3}
-  m_Name: Ship2
+  m_Script: {fileID: 11500000, guid: c7fdfec966c0ffb4789e1fd4fb778c79, type: 3}
+  m_Name: Upgrade2
   m_EditorClassIdentifier: 
-  shipName: 1
-  dmg: 0
-  hp: 5
-  speed: 3
+  weapName: Upgrade02
+  dmg: 1
+  hp: 0
+  speed: 0
   attackSpeed: 0
   selected: 1
-  weapName: 
-  artwork: {fileID: 21300000, guid: cf1dddae4b1c34e55ab689899cea4dd1, type: 3}
-  actualWeapon: 0
-  upgrade1: 0
-  upgrade2: 0
+  artwork: {fileID: 21300000, guid: 3b8db7241fc8ff54e9dea6fc64cfd7e5, type: 3}

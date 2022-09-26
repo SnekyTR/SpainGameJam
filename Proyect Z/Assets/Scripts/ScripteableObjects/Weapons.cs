@@ -7,6 +7,8 @@ public class Weapons : ScriptableObject
 {
     public string weapName;
     public int dmg;
+    public int hp;
+    public int speed;
     public float attackSpeed;
     public bool selected;
     public Sprite artwork;

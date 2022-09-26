@@ -8,19 +8,17 @@ public class UpgradesMenu : MonoBehaviour
 {
     [SerializeField] private ScriptableObject[] weapons;
     public ScriptableObject weaponSelected;
-    private GameObject upgrade1;
-    private GameObject upgrade2;
+    private GameObject weapon1;
     private bool clicked1;
-    private bool clicked2;
-    private Image upgradeImage;
+    private Image weaponImage;
 
     ShipsSelector shipsSelector;
     private int weapon;
     // Start is called before the first frame update
     void Start()
     {
-        upgrade1 = GameObject.Find("Upgrade1");
-        upgradeImage = GameObject.Find("Upgrade1Selected").GetComponent<Image>();
+        weapon1 = GameObject.Find("Weapons1");
+        weaponImage = GameObject.Find("Weapon1Selected").GetComponent<Image>();
         shipsSelector = GameObject.Find("SpaceShipZone").GetComponent<ShipsSelector>();
         
     }
@@ -32,53 +30,56 @@ public class UpgradesMenu : MonoBehaviour
             upgrade1.SetActive(true);
         }
     }
-    public void UpgradeButton(int i)
+    public void WeaponButton(int i)
     {
         if(i == 1)
         {
             if (!clicked1)
             {
-                LeanTween.move(upgrade1.transform.GetChild(0).gameObject, upgrade1.transform.GetChild(2).position, 0.5f);
-                upgrade1.transform.GetChild(0).gameObject.SetActive(true);
+                LeanTween.move(weapon1.transform.GetChild(0).gameObject, weapon1.transform.GetChild(6).position, 0.5f);
+                LeanTween.move(weapon1.transform.GetChild(1).gameObject, weapon1.transform.GetChild(7).position, 0.5f);
+                LeanTween.move(weapon1.transform.GetChild(2).gameObject, weapon1.transform.GetChild(8).position, 0.5f);
+                LeanTween.move(weapon1.transform.GetChild(3).gameObject, weapon1.transform.GetChild(9).position, 0.5f);
+                LeanTween.move(weapon1.transform.GetChild(4).gameObject, weapon1.transform.GetChild(10).position, 0.5f);
+                weapon1.transform.GetChild(0).gameObject.SetActive(true);
+                weapon1.transform.GetChild(1).gameObject.SetActive(true);
+                weapon1.transform.GetChild(2).gameObject.SetActive(true);
+                weapon1.transform.GetChild(3).gameObject.SetActive(true);
+                weapon1.transform.GetChild(4).gameObject.SetActive(true);
                 clicked1 = true;
             }
             else
             {
-                LeanTween.move(upgrade1.transform.GetChild(0).gameObject, upgrade1.transform.GetChild(1).position, 0.5f);
+                LeanTween.move(weapon1.transform.GetChild(0).gameObject, weapon1.transform.GetChild(6).position, 0.5f);
+                LeanTween.move(weapon1.transform.GetChild(1).gameObject, weapon1.transform.GetChild(7).position, 0.5f);
+                LeanTween.move(weapon1.transform.GetChild(2).gameObject, weapon1.transform.GetChild(8).position, 0.5f);
+                LeanTween.move(weapon1.transform.GetChild(3).gameObject, weapon1.transform.GetChild(9).position, 0.5f);
+                LeanTween.move(weapon1.transform.GetChild(4).gameObject, weapon1.transform.GetChild(10).position, 0.5f);
                 
-                upgrade1.transform.GetChild(0).gameObject.SetActive(false);
+                weapon1.transform.GetChild(0).gameObject.SetActive(false);
+                weapon1.transform.GetChild(1).gameObject.SetActive(false);
+                weapon1.transform.GetChild(2).gameObject.SetActive(false);
+                weapon1.transform.GetChild(3).gameObject.SetActive(false);
+                weapon1.transform.GetChild(4).gameObject.SetActive(false);
                 clicked1 = false;
             }
             
         }
-        else
-        {
-            if (!clicked2)
-            {
-                LeanTween.move(upgrade1, upgrade2.transform.GetChild(1).position, 0.5f);
-                clicked2 = true;
-            }else
-            {
-
-            }
-        }
     }
-    public void ApplyBuff(int weapNumber)
+    public void ApplyWeapon(int weapNumber)
     {
-        if(weapNumber == 0)
-        {
+        shipsSelector.RemoveStatsWeap(weaponSelected);
             weapon = weapNumber;
-            LeanTween.move(upgrade1.transform.GetChild(0).gameObject, upgrade1.transform.GetChild(1).position, 0);
-            upgrade1.transform.GetChild(0).gameObject.SetActive(false);
+            LeanTween.move(weapon1.transform.GetChild(0).gameObject, weapon1.transform.GetChild(5).position, 0);
+            weapon1.transform.GetChild(0).gameObject.SetActive(false);
             Weapons weap = (Weapons)weapons[weapNumber];
 
-            upgradeImage.enabled = true;
-            upgradeImage.sprite = weap.artwork;
+            weaponImage.enabled = true;
+            weaponImage.sprite = weap.artwork;
             weaponSelected = weapons[weapNumber];
             SpaceShips selectedShip= shipsSelector.GetActualSpaceShip();
-            selectedShip.actualWeapon = weapNumber;
-            print("Se ha cambiado el actualweapon");
-        }
+            print("Se ha cambiado el actualweapon" + weapNumber);
+        shipsSelector.UpdateStatsWeapon(weap);
     }
     public int GetWeapNumber()
     {

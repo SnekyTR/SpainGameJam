@@ -17,7 +17,7 @@ public static class SaveSystem
         stream.Close();
     }
 
-    public static ShipsData LoadShips(SpaceShips ships)
+    public static ShipsData LoadShips()
     {
         string path = Application.persistentDataPath + "/ships.data";
         if (File.Exists(path))

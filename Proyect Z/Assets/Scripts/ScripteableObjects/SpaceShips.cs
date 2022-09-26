@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Ships", menuName = "ScriptableObjects/Ship", order = 1)]
 public class SpaceShips : ScriptableObject
 {
-    public string shipName;
+    public int shipName;
     public int dmg;
     public int hp;
     public float speed;
@@ -14,4 +14,6 @@ public class SpaceShips : ScriptableObject
     public string weapName;
     public Sprite artwork;
     public int actualWeapon;
+    public int upgrade1;
+    public int upgrade2;
 }
