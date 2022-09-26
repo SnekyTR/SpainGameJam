@@ -7,7 +7,8 @@ public class UIMovement : MonoBehaviour
 {
     private GameObject buttons;
     private Transform spaceShipZone;
-
+    SpaceShips ship;
+    [SerializeField]private SpaceShips unsaved;
     GameSave gameSave;
     ShipsSelector shipsSelector;
 
@@ -38,7 +39,7 @@ public class UIMovement : MonoBehaviour
     {
         LeanTween.move(buttons, buttonsPosition1, 0.5f);
         LeanTween.move(spaceShipZone.gameObject, newSpaceShipPosition1, 0.5f);
-        SpaceShips ship = shipsSelector.GetShip();
+        ship = shipsSelector.GetShip();
         SaveSystem.SaveShips(ship);
     }
     public void ExitGame()
@@ -47,6 +48,16 @@ public class UIMovement : MonoBehaviour
     }
     public void StartGame()
     {
+        if(ship == null)
+        {
+            SpaceShips shipp = (SpaceShips)unsaved;
+            SaveSystem.SaveShips(shipp);
+        }
+        else
+        {
+            SaveSystem.SaveShips(ship);
+        }
+        
         SceneManager.LoadScene(1);
     }
 }
