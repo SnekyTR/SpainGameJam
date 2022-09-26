@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         //cargar datos de shipName y weaponName
-
+        LoadShips();
         if(shipName == 0)
         {
             player = Instantiate(ships[0].gameObject, transform.position, Quaternion.identity);
@@ -99,7 +99,15 @@ public class GameManager : MonoBehaviour
     {
 
     }
+    public void LoadShips()
+    {
+        ShipsData data = SaveSystem.LoadShips();
 
+        shipName = data.shipName;
+        weaponName = data.weapon;
+        upgrade01 = data.upgrade1;
+        upgrade02 = data.upgrade2;
+    }
     private void FixedUpdate()
     {
         if (energy == 100 && progress < 100)
