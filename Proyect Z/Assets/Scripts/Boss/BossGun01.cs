@@ -13,6 +13,8 @@ public class BossGun01 : MonoBehaviour
 
     GameManager gm;
 
+    public AudioSource audioS;
+
     private void Start()
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -37,6 +39,8 @@ public class BossGun01 : MonoBehaviour
             Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
 
             shootLoad = 0;
+
+            audioS.Play();
 
             GameObject go = Instantiate(bullet.gameObject, transform.position, q);
             AIBullet goBullet = go.GetComponent<AIBullet>();

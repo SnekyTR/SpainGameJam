@@ -10,6 +10,8 @@ public class PlayerGun : MonoBehaviour
 
     float shootLoad;
 
+    public AudioSource audioS;
+
     public void Shoot()
     {
         shootLoad += Time.fixedDeltaTime;
@@ -18,6 +20,8 @@ public class PlayerGun : MonoBehaviour
         {
             direction = (transform.rotation * Vector2.right).normalized;
             shootLoad = 0;
+
+            audioS.Play();
 
             GameObject go = Instantiate(bullet.gameObject, transform.position, transform.rotation);
             PlayerBullet goBullet = go.GetComponent<PlayerBullet>();

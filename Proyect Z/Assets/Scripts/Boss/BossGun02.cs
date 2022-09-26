@@ -9,6 +9,8 @@ public class BossGun02 : MonoBehaviour
 
     public GameObject bullet;
 
+    public AudioSource audioS;
+
     private void FixedUpdate()
     {
         ShootAI();
@@ -21,6 +23,8 @@ public class BossGun02 : MonoBehaviour
         if (shootLoad >= reload)
         {
             shootLoad = 0;
+
+            audioS.Play();
 
             Destroy(Instantiate(bullet.gameObject, transform.position, Quaternion.identity), 8);
 

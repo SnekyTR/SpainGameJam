@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,8 +14,17 @@ public class GameManager : MonoBehaviour
     private int energy = 0;
     private float progress = 0f;
 
-    public Text energyTxt;
-    public Text progressTxt;
+    public TextMeshProUGUI energyTxt;
+    public TextMeshProUGUI progressTxt;
+    public Image energyImg, progressImg;
+
+    public Color color01, color02, color03, color04;
+
+    public List<GameObject> lifesImg;
+    public List<Sprite> puImgs;
+    public Image puR, saR;
+
+    public GameObject winPanel, losePanel;
 
     public List<PlayerShip> ships;
     public List<WeaponPU> weapons;
@@ -93,6 +104,21 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         energyTxt.text = energy.ToString();
+
+        energyImg.fillAmount = ((int)energy / 100f);
+
+        if (energy == 100)
+        {
+            energyImg.color = color01;
+        }
+        else if (energy >= 50)
+        {
+            energyImg.color = color02;
+        }
+        else
+        {
+            energyImg.color = color03;
+        }
     }
 
     void Update()
@@ -114,7 +140,9 @@ public class GameManager : MonoBehaviour
         {
             progress += Time.fixedDeltaTime * 1.2f;
 
-            progressTxt.text = ((int)progress).ToString();
+            progressTxt.text = ((int)progress).ToString() + "%";
+
+            progressImg.fillAmount = ((int)progress / 100f);
         }
         else if (!isEnd && progress >= 100)
         {
@@ -147,6 +175,30 @@ public class GameManager : MonoBehaviour
         energy = e;
 
         energyTxt.text = energy.ToString();
+
+        if(energy <= 100)
+        {
+            energyImg.fillAmount = ((int)energy / 100f);
+
+            if(energy == 100)
+            {
+                energyImg.color = color01;
+            }
+            else if(energy >= 50)
+            {
+                energyImg.color = color02;
+            }
+            else
+            {
+                energyImg.color = color03;
+            }
+        }
+        else
+        {
+            energyImg.fillAmount = 1;
+
+            energyImg.color = color04;
+        }
     }
 
     public float GetProgress()
@@ -163,13 +215,59 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
 
-        //pantalla de victoria
+        winPanel.SetActive(true);
     }
 
     public void Defeat()
     {
         Time.timeScale = 0;
 
-        //pantalla de derrota
+        losePanel.SetActive(true);
+    }
+
+    public void SetPU(int i)
+    {
+        if(i == 1)
+        {
+            puR.sprite = puImgs[0];
+        }
+        else if(i == 2)
+        {
+            puR.sprite = puImgs[1];
+        }
+        else if (i == 3)
+        {
+            saR.sprite = puImgs[2];
+        }
+        else if (i == 4)
+        {
+            saR.sprite = puImgs[3];
+        }
+        else if (i == 5)
+        {
+            saR.sprite = puImgs[4];
+        }
+    }
+
+    public void NoPU(int i)
+    {
+        if (i == 1)
+        {
+            puR.sprite = puImgs[5];
+        }
+        else if (i == 2)
+        {
+            saR.sprite = puImgs[6];
+        }
+    }
+
+    public void ReturnToMain()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void Retry()
+    {
+        SceneManager.LoadScene(1);
     }
 }

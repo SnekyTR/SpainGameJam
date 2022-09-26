@@ -41,30 +41,40 @@ public class WeaponPU : MonoBehaviour
         if(collision.transform.tag == "PU01")
         {
             PowerUp01();
+            gm.SetPU(1);
+
             Destroy(collision.gameObject);
         }
 
         if (collision.transform.tag == "PU02")
         {
             PowerUp02();
+            gm.SetPU(2);
+
             Destroy(collision.gameObject);
         }
 
         if (collision.transform.tag == "CReloadx2")
         {
             ChangeReload(2);
+            gm.SetPU(3);
+
             Destroy(collision.gameObject);
         }
 
         if (collision.transform.tag == "CReloadx3")
         {
             ChangeReload(3);
+            gm.SetPU(4);
+
             Destroy(collision.gameObject);
         }
 
         if (collision.transform.tag == "CReloadx4")
         {
             ChangeReload(4);
+            gm.SetPU(5);
+
             Destroy(collision.gameObject);
         }
 
@@ -144,6 +154,8 @@ public class WeaponPU : MonoBehaviour
         gunC[2].gameObject.SetActive(false);
 
         PUExit();
+
+        gm.NoPU(1);
     }
 
     private IEnumerator NewCR()
@@ -154,6 +166,8 @@ public class WeaponPU : MonoBehaviour
         {
             gun.ChangeReload(reload);
         }
+
+        gm.NoPU(2);
     }
 
     private void PUExtra01()

@@ -22,10 +22,16 @@ public class PlayerShip : MonoBehaviour
 
     private bool noDmg;
 
+    private List<GameObject> lifesImg;
+
     void Start()
     {
         maxLife = life;
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        lifesImg = gm.lifesImg;
+
+        InitialLifes();
     }
 
     void Update()
@@ -91,6 +97,14 @@ public class PlayerShip : MonoBehaviour
                 courutine = null;
             }
 
+            for (int e = 0; e < lifesImg.Count; e++)
+            {
+                if (e >= life)
+                {
+                    lifesImg[e].SetActive(false);
+                }
+            }
+
             courutine = RecieveDmg();
 
             StartCoroutine(courutine);
@@ -102,6 +116,14 @@ public class PlayerShip : MonoBehaviour
             if(life > maxLife)
             {
                 life = maxLife;
+            }
+
+            for (int e = 0; e < lifesImg.Count; e++)
+            {
+                if (e < life)
+                {
+                    lifesImg[e].SetActive(true);
+                }
             }
         } 
     }
@@ -119,5 +141,16 @@ public class PlayerShip : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         noDmg = false;
         GetComponent<SpriteRenderer>().color = Color.white;
+    }
+
+    private void InitialLifes()
+    {
+        for(int i = 0; i < lifesImg.Count; i++)
+        {
+            if(i >= life)
+            {
+                lifesImg[i].SetActive(false);
+            }
+        }
     }
 }
