@@ -17,23 +17,23 @@ public class OperationCol : MonoBehaviour
         if(operation == 1)
         {
             a *= 5;
-            txt.text = "+ " + a;
+            txt.text = "+" + a;
         }
         else if(operation == 2)
         {
             a *= 5;
-            txt.text = "- " + a;
+            txt.text = "-" + a;
         }
         else if(operation == 3)
         {
             if (a == 1)
             {
                 a += 1;
-                txt.text = "x " + a;
+                txt.text = "x" + a;
             }
             else
             {
-                txt.text = "x " + a;
+                txt.text = "x" + a;
             }
         }
         else if(operation == 4)
@@ -41,11 +41,11 @@ public class OperationCol : MonoBehaviour
             if (a == 1)
             {
                 a += 1;
-                txt.text = "/ " + a;
+                txt.text = "/" + a;
             }
             else
             {
-                txt.text = "/ " + a;
+                txt.text = "/" + a;
             }
         }
     }

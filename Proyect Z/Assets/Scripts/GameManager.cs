@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public string shipName;
-    public string weaponName;
+    public int shipName;
+    public int weaponName;
+    public int upgrade01, upgrade02;        //valores que se deben cargar datos
 
     private int energy = 0;
     private float progress = 0f;
@@ -17,53 +18,81 @@ public class GameManager : MonoBehaviour
     public List<PlayerShip> ships;
     public List<WeaponPU> weapons;
 
-    private GameObject player;
+    private int partLifes = 0;
+
+    [HideInInspector] public GameObject player;
+
+    [HideInInspector] public float extraDmg = 1; 
+    [HideInInspector] public float extraVel = 1; 
+    [HideInInspector] public float extraTime = 1;
+
+    public bool isEnd;
+    public GameObject boss;
+    public Transform bossPos;
 
     private void Awake()
     {
         //cargar datos de shipName y weaponName
 
-        if(shipName == "Ship01")
+        if(shipName == 0)
         {
             player = Instantiate(ships[0].gameObject, transform.position, Quaternion.identity);
         }
-        else if (shipName == "Ship02")
+        else if (shipName == 1)
         {
             player = Instantiate(ships[1].gameObject, transform.position, Quaternion.identity);
         }
-        else if (shipName == "Ship03")
+        else if (shipName == 2)
         {
             player = Instantiate(ships[2].gameObject, transform.position, Quaternion.identity);
         }
 
-        if(weaponName == "Weapon01")
+        if(weaponName == 0)
         {
             Instantiate(weapons[0].gameObject, transform.position, Quaternion.identity, player.transform);
         }
-        else if (weaponName == "Weapon02")
+        else if (weaponName == 1)
         {
             Instantiate(weapons[1].gameObject, transform.position, Quaternion.identity, player.transform);
         }
-        else if (weaponName == "Weapon03")
+        else if (weaponName == 2)
         {
             Instantiate(weapons[2].gameObject, transform.position, Quaternion.identity, player.transform);
         }
-        else if (weaponName == "Weapon04")
+        else if (weaponName == 3)
         {
             Instantiate(weapons[3].gameObject, transform.position, Quaternion.identity, player.transform);
         }
-        else if (weaponName == "Weapon05")
+        else if (weaponName == 4)
         {
             Instantiate(weapons[4].gameObject, transform.position, Quaternion.identity, player.transform);
+        }
+
+        if (upgrade01 == 0 || upgrade02 == 0)
+        {
+            player.GetComponent<PlayerShip>().SetNewMaxLife(1);
+        }
+        if (upgrade01 == 1 || upgrade02 == 1)
+        {
+            extraDmg = 1.5f;
+        }
+        if (upgrade01 == 2 || upgrade02 == 2)
+        {
+            extraVel = 1.25f;
+        }
+        if (upgrade01 == 3 || upgrade02 == 3)
+        {
+            energy = 50;
+        }
+        if (upgrade01 == 4 || upgrade02 == 4)
+        {
+            extraTime = 1.25f;
         }
     }
 
     void Start()
     {
-        energy = 100;
         energyTxt.text = energy.ToString();
-
-
     }
 
     void Update()
@@ -79,18 +108,13 @@ public class GameManager : MonoBehaviour
 
             progressTxt.text = ((int)progress).ToString();
         }
-        /*else if (energy <= 120 && energy >= 80)
+        else if (!isEnd)
         {
-            progress += Time.fixedDeltaTime * 0.3f;
+            isEnd = true;
 
-            progressTxt.text = ((int)progress).ToString();
+            Instantiate(boss, bossPos.position, Quaternion.identity);
         }
-        else if (energy <= 200 && energy >= 0)
-        {
-            progress += Time.fixedDeltaTime * 0.1f;
 
-            progressTxt.text = ((int)progress).ToString();
-        }*/
     }
 
     public int GetEnergy()
@@ -118,4 +142,18 @@ public class GameManager : MonoBehaviour
     {
         return progress;
     }
+
+    public void MoreLifes()
+    {
+        partLifes += 1;
+
+        if(partLifes == 4)
+        {
+            partLifes = 0;
+
+            player.GetComponent<PlayerShip>().SetLife(1);
+        }
+    }
+
+
 }

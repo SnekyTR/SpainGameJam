@@ -12,11 +12,15 @@ public class WeaponPU : MonoBehaviour
     IEnumerator courutinePU;
     IEnumerator courutineCR;
 
-    public List<PlayerBullet> newBullets; 
+    public List<PlayerBullet> newBullets;
+
+    GameManager gm;
 
     void Start()
     {
         gunC = transform.GetComponentsInChildren<GunControl>();
+
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         foreach (GunControl gun in gunC)
         {
@@ -63,6 +67,17 @@ public class WeaponPU : MonoBehaviour
             ChangeReload(4);
             Destroy(collision.gameObject);
         }
+
+        if (collision.transform.tag == "LifePart")
+        {
+            MoreLife();
+            Destroy(collision.gameObject);
+        }
+    }
+
+    private void MoreLife()
+    {
+        gm.MoreLifes();
     }
 
     public void PowerUp01()
@@ -123,10 +138,12 @@ public class WeaponPU : MonoBehaviour
 
     private IEnumerator NewPU(int e)
     {
-        yield return new WaitForSeconds(12f);
+        yield return new WaitForSeconds((12f * gm.extraTime));
 
         gunC[1].gameObject.SetActive(false);
         gunC[2].gameObject.SetActive(false);
+
+        PUExit();
     }
 
     private IEnumerator NewCR()

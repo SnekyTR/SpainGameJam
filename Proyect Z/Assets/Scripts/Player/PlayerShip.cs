@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerShip : MonoBehaviour
 {
@@ -13,10 +14,16 @@ public class PlayerShip : MonoBehaviour
 
     [SerializeField]
     private int life;
+    private int maxLife;
+
+    private GameManager gm;
+
+    private IEnumerator courutine;
 
     void Start()
     {
-
+        maxLife = life;
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     void Update()
@@ -31,7 +38,7 @@ public class PlayerShip : MonoBehaviour
     {
         Vector2 pos = transform.position;
 
-        float moveAmount = moveSpeed * Time.fixedDeltaTime;
+        float moveAmount = moveSpeed * Time.fixedDeltaTime * (1 + (gm.GetEnergy() / 150f)) * gm.extraVel;
         Vector2 move = Vector2.zero;
 
         if (moveUp) move.y += moveAmount;
@@ -66,5 +73,31 @@ public class PlayerShip : MonoBehaviour
     public void SetLife(int i)
     {
         life += i;
+
+        if (i < 0)
+        {
+            if(courutine != null)
+            {
+                StopCoroutine(courutine);
+                courutine = null;
+            }
+
+            courutine = RecieveDmg();
+
+            StartCoroutine(courutine);
+        }
+    }
+
+    public void SetNewMaxLife(int e)
+    {
+        life += e;
+        maxLife += e;
+    }
+
+    private IEnumerator RecieveDmg()
+    {
+        GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.4f);
+        GetComponent<SpriteRenderer>().color = Color.white;
     }
 }

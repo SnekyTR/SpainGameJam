@@ -99,10 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ed8b5d7c4878c544813051ce1281cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
-  bulletDestroy: 0.46
+  speed: 16
+  bulletDestroy: 0.55
   direction: {x: 1, y: 0}
   baseDmg: 40
+  explObj: {fileID: 0}
 --- !u!95 &1774855271212825245
 Animator:
   serializedVersion: 4

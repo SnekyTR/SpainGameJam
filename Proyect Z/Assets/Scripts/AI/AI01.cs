@@ -16,16 +16,6 @@ public class AI01 : MonoBehaviour
 
     private float multi = -1f;
 
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
     private void FixedUpdate()
     {
         ShootAI();

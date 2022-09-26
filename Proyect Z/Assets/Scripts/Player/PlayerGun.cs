@@ -9,12 +9,6 @@ public class PlayerGun : MonoBehaviour
     [HideInInspector] public float reload;
 
     float shootLoad;
-    GameManager gm;
-
-    void Start()
-    {
-        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-    }
 
     public void Shoot()
     {

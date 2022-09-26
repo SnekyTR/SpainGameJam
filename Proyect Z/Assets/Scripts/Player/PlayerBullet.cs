@@ -20,7 +20,7 @@ public class PlayerBullet : MonoBehaviour
     {
         GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-        SetBulletDmg(gm.GetEnergy());
+        SetBulletDmg(gm.GetEnergy(), gm.extraDmg);
 
         Destroy(gameObject, bulletDestroy);
     }
@@ -53,8 +53,8 @@ public class PlayerBullet : MonoBehaviour
         }
     }
 
-    private void SetBulletDmg(int i)
+    private void SetBulletDmg(int i, float e)
     {
-        bulletDmg = (int)(baseDmg * (1 + (i/50)));
+        bulletDmg = (int)(baseDmg * (1 + (i/50)) * e);
     }
 }

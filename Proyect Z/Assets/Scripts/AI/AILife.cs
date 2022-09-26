@@ -14,16 +14,17 @@ public class AILife : MonoBehaviour
 
     public Color dmgColor;
 
+    public GameObject explode;
+
     private IEnumerator courutine01;
+
+    public bool negative;
+
+    public bool boss;
 
     void Start()
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-    }
-
-    void Update()
-    {
-        
     }
 
     public void SetLife(int e)
@@ -37,6 +38,11 @@ public class AILife : MonoBehaviour
 
         if(health <= 0)
         {
+            if (boss)
+            {
+
+            }
+
             int value00 = 0;
 
             if (gm.GetProgress() <= 30)
@@ -47,7 +53,7 @@ public class AILife : MonoBehaviour
             {
                 value00 = 60;
             }
-            else if (gm.GetProgress() <= 100)
+            else if (gm.GetProgress() <= 120)
             {
                 value00 = 100;
             }
@@ -71,6 +77,8 @@ public class AILife : MonoBehaviour
                     InstianteLife();
                 }
             }
+
+            Destroy(Instantiate(explode, transform.position, transform.rotation), 0.4f);
 
             Destroy(gameObject);
         }
@@ -112,7 +120,39 @@ public class AILife : MonoBehaviour
         }
 
         int rnd01 = Random.Range(1, value01);
-        int rnd02 = Random.Range(1, value02);
+        int rnd02 = Random.Range(1, 100);
+
+        if (negative)
+        {
+            if (rnd02 >= 50)
+            {
+                rnd02 = 2;
+            }
+            else if (rnd02 < 50 && value02 >= 5)
+            {
+                rnd02 = 4;
+            }
+            else
+            {
+                rnd02 = 2;
+            }
+        }
+        else
+        {
+            if (rnd02 >= 50)
+            {
+                rnd02 = 1;
+            }
+            else if (rnd02 < 50 && value02 >= 5)
+            {
+                rnd02 = 3;
+            }
+            else
+            {
+                rnd02 = 1;
+            }
+        }
+        
 
         op.SetValues(rnd01, rnd02);
     }
@@ -178,7 +218,7 @@ public class AILife : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().color = dmgColor;
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.4f);
 
         GetComponent<SpriteRenderer>().color = Color.white;
     }

@@ -9,9 +9,6 @@ public class AIBullet : MonoBehaviour
 
     private Vector2 velocity;
 
-    public int amount;
-    public int operation;
-
     void Start()
     {
         Destroy(gameObject, 3);
@@ -38,10 +35,5 @@ public class AIBullet : MonoBehaviour
             collision.gameObject.GetComponent<PlayerShip>().SetLife(-1);
             Destroy(gameObject);
         }
-    }
-
-    private void PlayerCollision()
-    {
-        
     }
 }

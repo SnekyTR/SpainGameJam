@@ -11,6 +11,11 @@ public class MovePU : MonoBehaviour
     public Vector2 direction;
     [HideInInspector] public float initialPos;
 
+    private void Start()
+    {
+        Destroy(gameObject, 12);
+    }
+
     void Update()
     {
         velocity = direction * speed;
