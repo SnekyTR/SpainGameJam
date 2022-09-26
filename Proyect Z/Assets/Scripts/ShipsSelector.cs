@@ -31,6 +31,7 @@ public class ShipsSelector : MonoBehaviour
     [SerializeField] private UpgradesMenu upgradesMenu;
     private void Awake()
     {
+        upgr2 = 1;
         Assign();
     }
     private void Start()

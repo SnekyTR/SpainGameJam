@@ -16,16 +16,23 @@ public class RealUpgrades : MonoBehaviour
     private Image upgradeImage1;
     private Image upgradeImage2;
 
+    private string stringdisabled;
+    private string stringToEnable;
+    private string stringToEnabl2;
+    [SerializeField] private Sprite disabledSprite;
+
     ShipsSelector shipsSelector;
     private int upgrade;
     // Start is called before the first frame update
     private void Awake()
     {
+        
         bool ESP;
         upgradeImage1 = GameObject.Find("Upgrade1Selected").GetComponent<Image>();
         if (GameObject.Find("Upgrade2Selected"))
         {
             upgradeImage2 = GameObject.Find("Upgrade2Selected").GetComponent<Image>();
+            BossDefeated();
             ESP = true;
         }
         else
@@ -96,6 +103,20 @@ public class RealUpgrades : MonoBehaviour
                 upgrade1.transform.GetChild(2).gameObject.SetActive(true);
                 upgrade1.transform.GetChild(3).gameObject.SetActive(true);
                 upgrade1.transform.GetChild(4).gameObject.SetActive(true);
+                stringdisabled = stringdisabled + 1;
+                print(stringdisabled);
+                if (GameObject.Find(stringdisabled))
+                {
+                    GameObject.Find(stringdisabled).GetComponent<Button>().interactable = false;
+                }
+                if (stringToEnabl2 != null)
+                {
+                    stringToEnabl2 = stringToEnabl2 + 1;
+                    if (GameObject.Find(stringToEnabl2))
+                        {
+                        GameObject.Find(stringToEnabl2).GetComponent<Button>().interactable = true;
+                    }                   
+                }
                 clicked1 = true;
             }
             else
@@ -118,6 +139,20 @@ public class RealUpgrades : MonoBehaviour
                 upgrade2.transform.GetChild(2).gameObject.SetActive(true);
                 upgrade2.transform.GetChild(3).gameObject.SetActive(true);
                 upgrade2.transform.GetChild(4).gameObject.SetActive(true);
+                stringdisabled = stringdisabled + 2;
+                print(stringdisabled);
+                if (GameObject.Find(stringdisabled))
+                {
+                    GameObject.Find(stringdisabled).GetComponent<Button>().interactable = false;
+                }
+                if (stringToEnabl2 != null)
+                {
+                    stringToEnabl2 = stringToEnabl2 + 2;
+                    if (GameObject.Find(stringToEnabl2))
+                    {
+                        GameObject.Find(stringToEnabl2).GetComponent<Button>().interactable = true;
+                    }
+                }
                 clicked2 = true;
             }
             else
@@ -128,15 +163,17 @@ public class RealUpgrades : MonoBehaviour
     }
     private void TurnOffUpgrade2()
     {
-        LeanTween.move(upgrade2.transform.GetChild(0).gameObject, upgrade2.transform.GetChild(4).position, 0.5f);
-        LeanTween.move(upgrade2.transform.GetChild(1).gameObject, upgrade2.transform.GetChild(4).position, 0.5f);
-        LeanTween.move(upgrade2.transform.GetChild(2).gameObject, upgrade2.transform.GetChild(4).position, 0.5f);
-        LeanTween.move(upgrade2.transform.GetChild(3).gameObject, upgrade2.transform.GetChild(4).position, 0.5f);
+        LeanTween.move(upgrade2.transform.GetChild(0).gameObject, upgrade2.transform.GetChild(5).position, 0.5f);
+        LeanTween.move(upgrade2.transform.GetChild(1).gameObject, upgrade2.transform.GetChild(5).position, 0.5f);
+        LeanTween.move(upgrade2.transform.GetChild(2).gameObject, upgrade2.transform.GetChild(5).position, 0.5f);
+        LeanTween.move(upgrade2.transform.GetChild(3).gameObject, upgrade2.transform.GetChild(5).position, 0.5f);
+        LeanTween.move(upgrade2.transform.GetChild(4).gameObject, upgrade2.transform.GetChild(5).position, 0.5f);
 
         upgrade2.transform.GetChild(0).gameObject.SetActive(false);
         upgrade2.transform.GetChild(1).gameObject.SetActive(false);
         upgrade2.transform.GetChild(2).gameObject.SetActive(false);
         upgrade2.transform.GetChild(3).gameObject.SetActive(false);
+        upgrade2.transform.GetChild(4).gameObject.SetActive(false);
         clicked2 = false;
     }
     private void TurnOffUpgrade1()
@@ -159,11 +196,14 @@ public class RealUpgrades : MonoBehaviour
         if (upgradeNumber <=4 )
         {
             shipsSelector.RemoveStatsUpgrades(upgradeSelected1);
+            
             upgrade = upgradeNumber;
             LeanTween.move(upgrade1.transform.GetChild(0).gameObject, upgrade1.transform.GetChild(5).position, 0);
-            upgrade1.transform.GetChild(0).gameObject.SetActive(false);
-            Weapons weap = (Weapons)upgrades[upgradeNumber];
             
+            Weapons weap = (Weapons)upgrades[upgradeNumber];
+            DisableUpgrade(weap.weapName, 1);
+
+            //upgrade1.transform.GetChild(0).gameObject.SetActive(false);
             upgradeImage1.enabled = true;
             upgradeImage1.sprite = weap.artwork;
             upgradeSelected1 = upgrades[upgradeNumber];
@@ -179,7 +219,7 @@ public class RealUpgrades : MonoBehaviour
             LeanTween.move(upgrade1.transform.GetChild(0).gameObject, upgrade1.transform.GetChild(5).position, 0);
             upgrade1.transform.GetChild(0).gameObject.SetActive(false);
             Weapons weap = (Weapons)upgrades[upgradeNumber];
-
+            DisableUpgrade(weap.weapName, 2);
             upgradeImage2.enabled = true;
             upgradeImage2.sprite = weap.artwork;
             upgradeSelected2 = upgrades[upgradeNumber];
@@ -187,5 +227,60 @@ public class RealUpgrades : MonoBehaviour
             print("Se ha cambiado el actualweapon");
             shipsSelector.UpdateStatsUpgrades(1, weap);
         }
+    }
+    private void DisableUpgrade(string upgradeName, int a)
+    {
+        if (stringToEnable != null)
+        {
+            stringToEnabl2 = stringToEnable;
+            EnableUpgrade(stringToEnable, a);
+        }
+        stringdisabled = upgradeName;
+        stringToEnable = upgradeName;
+        if (a == 1)
+        {
+            upgradeName = upgradeName + a;
+            if (GameObject.Find(upgradeName))
+            {
+                GameObject.Find(upgradeName).GetComponent<Button>().interactable = false;
+            }
+            
+        }
+        else
+        {
+            upgradeName = upgradeName + a;
+            if (GameObject.Find(upgradeName))
+            {
+                GameObject.Find(upgradeName).GetComponent<Button>().interactable = false;
+            }
+
+        }
+        
+    }
+    private void EnableUpgrade(string upgradeName, int a)
+    {
+        stringToEnable = upgradeName;
+        if (a == 1)
+        {
+            upgradeName = upgradeName + a;
+            if (GameObject.Find(upgradeName))
+            {
+                GameObject.Find(upgradeName).GetComponent<Button>().interactable = true;
+            }
+
+        }
+        else
+        {
+            upgradeName = upgradeName + a;
+            if (GameObject.Find(upgradeName))
+            {
+                GameObject.Find(upgradeName).GetComponent<Button>().interactable = true;
+            }
+
+        }
+    }
+    public void BossDefeated()
+    {
+        upgradeSelected2 = upgrades[1];
     }
 }
