@@ -20,6 +20,8 @@ public class PlayerShip : MonoBehaviour
 
     private IEnumerator courutine;
 
+    private bool noDmg;
+
     void Start()
     {
         maxLife = life;
@@ -72,7 +74,14 @@ public class PlayerShip : MonoBehaviour
 
     public void SetLife(int i)
     {
+        if (noDmg) return;
+
         life += i;
+
+        if(life <= 0)
+        {
+            gm.Defeat();
+        }
 
         if (i < 0)
         {
@@ -86,6 +95,15 @@ public class PlayerShip : MonoBehaviour
 
             StartCoroutine(courutine);
         }
+        else if(i > 0)
+        {
+            life += i;
+
+            if(life > maxLife)
+            {
+                life = maxLife;
+            }
+        } 
     }
 
     public void SetNewMaxLife(int e)
@@ -96,8 +114,10 @@ public class PlayerShip : MonoBehaviour
 
     private IEnumerator RecieveDmg()
     {
+        noDmg = true;
         GetComponent<SpriteRenderer>().color = Color.red;
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(1.5f);
+        noDmg = false;
         GetComponent<SpriteRenderer>().color = Color.white;
     }
 }

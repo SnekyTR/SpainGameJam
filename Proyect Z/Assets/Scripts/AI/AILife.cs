@@ -25,6 +25,8 @@ public class AILife : MonoBehaviour
     void Start()
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        health *= (int)(1 + (gm.GetProgress() / 75));
     }
 
     public void SetLife(int e)
@@ -40,7 +42,9 @@ public class AILife : MonoBehaviour
         {
             if (boss)
             {
+                gm.FinishGame();
 
+                return;
             }
 
             int value00 = 0;
@@ -60,7 +64,7 @@ public class AILife : MonoBehaviour
 
             int rnd01 = Random.Range(0, value00);
 
-            if(rnd01 >= 20)
+            if(rnd01 >= 10)
             {
                 int rnd = Random.Range(0, 100);
 

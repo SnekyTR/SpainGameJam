@@ -7,6 +7,8 @@ public class AIGun02 : MonoBehaviour
     public AIBullet bullet;
     Vector2 direction;
 
+    public AudioSource audioS;
+
     public void Shoot()
     {
         StartCoroutine(ShotIA());
@@ -21,6 +23,8 @@ public class AIGun02 : MonoBehaviour
         Quaternion newRot = Quaternion.Euler(new Vector3(0, 0, (transform.rotation.eulerAngles.z - 180)));
 
         yield return new WaitForSeconds(0.12f);
+
+        audioS.Play();
 
         GameObject go = Instantiate(bullet.gameObject, transform.position, newRot);
         AIBullet goBullet = go.GetComponent<AIBullet>();

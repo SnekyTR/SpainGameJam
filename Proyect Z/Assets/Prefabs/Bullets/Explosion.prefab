@@ -135,4 +135,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c703ff5f120ef70459ca455ac8633161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDmg: 50
+  baseDmg: 65

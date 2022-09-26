@@ -16,6 +16,13 @@ public class AI01 : MonoBehaviour
 
     private float multi = -1f;
 
+    private AudioSource audioS;
+
+    private void Start()
+    {
+        audioS = GetComponent<AudioSource>();
+    }
+
     private void FixedUpdate()
     {
         ShootAI();
@@ -55,6 +62,8 @@ public class AI01 : MonoBehaviour
         {
             direction = (transform.rotation * Vector2.left).normalized;
             shootLoad = 0;
+
+            audioS.Play();
 
             GameObject go = Instantiate(bullet.gameObject, gun.position, Quaternion.identity);
             AIBullet goBullet = go.GetComponent<AIBullet>();

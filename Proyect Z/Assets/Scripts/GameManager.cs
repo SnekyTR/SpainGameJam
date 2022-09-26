@@ -18,8 +18,6 @@ public class GameManager : MonoBehaviour
     public List<PlayerShip> ships;
     public List<WeaponPU> weapons;
 
-    private int partLifes = 0;
-
     [HideInInspector] public GameObject player;
 
     [HideInInspector] public float extraDmg = 1; 
@@ -29,6 +27,8 @@ public class GameManager : MonoBehaviour
     public bool isEnd;
     public GameObject boss;
     public Transform bossPos;
+
+    public GameObject ai04Generator, aiGenerator;
 
     private void Awake()
     {
@@ -101,26 +101,29 @@ public class GameManager : MonoBehaviour
     }
     public void LoadShips()
     {
-        ShipsData data = SaveSystem.LoadShips();
+        /*ShipsData data = SaveSystem.LoadShips();
 
         shipName = data.shipName;
         weaponName = data.weapon;
         upgrade01 = data.upgrade1;
-        upgrade02 = data.upgrade2;
+        upgrade02 = data.upgrade2;*/
     }
     private void FixedUpdate()
     {
         if (energy == 100 && progress < 100)
         {
-            progress += Time.fixedDeltaTime * 24f;
+            progress += Time.fixedDeltaTime * 1.2f;
 
             progressTxt.text = ((int)progress).ToString();
         }
-        else if (!isEnd)
+        else if (!isEnd && progress >= 100)
         {
             isEnd = true;
 
-            Instantiate(boss, bossPos.position, Quaternion.identity);
+            Destroy(ai04Generator);
+            Destroy(aiGenerator);
+
+            Instantiate(boss, bossPos.position, transform.rotation);
         }
 
     }
@@ -153,15 +156,20 @@ public class GameManager : MonoBehaviour
 
     public void MoreLifes()
     {
-        partLifes += 1;
-
-        if(partLifes == 4)
-        {
-            partLifes = 0;
-
-            player.GetComponent<PlayerShip>().SetLife(1);
-        }
+        player.GetComponent<PlayerShip>().SetLife(1);
     }
 
+    public void FinishGame()
+    {
+        Time.timeScale = 0;
 
+        //pantalla de victoria
+    }
+
+    public void Defeat()
+    {
+        Time.timeScale = 0;
+
+        //pantalla de derrota
+    }
 }

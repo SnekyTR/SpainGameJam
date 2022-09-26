@@ -155,7 +155,7 @@ MonoBehaviour:
   speed: 10
   bulletDestroy: 5
   direction: {x: 1, y: 0}
-  baseDmg: 50
+  baseDmg: 65
   explObj: {fileID: 3396525538791163999, guid: 79a290f0c8057a041abba7b6374b818b, type: 3}
 --- !u!61 &8557298068629828366
 BoxCollider2D:
