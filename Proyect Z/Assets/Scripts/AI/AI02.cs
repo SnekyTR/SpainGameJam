@@ -27,15 +27,15 @@ public class AI02 : MonoBehaviour
 
     private IEnumerator AsignateNewPos()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(3.5f);
         Destroy(Instantiate(tpFX, transform.position, transform.rotation, transform), 0.4f);
         yield return new WaitForSeconds(0.2f);
 
         int rnd = Random.Range(0, positions.Count);
 
         transform.position = positions[rnd].position;
-
-        foreach(AIGun02 gun in guns)
+        yield return new WaitForSeconds(0.3f);
+        foreach (AIGun02 gun in guns)
         {
             gun.Shoot();
         }

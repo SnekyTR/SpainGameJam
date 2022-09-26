@@ -31,7 +31,7 @@ public class AIGenerator : MonoBehaviour
     {
         shootLoad += Time.fixedDeltaTime;
 
-        if (shootLoad >= (reload / (1 + (gm.GetProgress() / 75))))
+        if (shootLoad >= (reload / (1 + (gm.GetProgress() / 100))))
         {
             shootLoad = 0;
 

@@ -21,12 +21,6 @@ public class MoveBackground : MonoBehaviour
     void Update()
     {
         velocity = direction * speed;
-
-        if(!isInstiante && transform.position.x <= 0)
-        {
-            isInstiante = true;
-            Instantiate(newBackground, pivot.position, Quaternion.identity);
-        }
     }
 
     private void FixedUpdate()
@@ -36,5 +30,11 @@ public class MoveBackground : MonoBehaviour
         pos += velocity * Time.fixedDeltaTime;
 
         transform.position = pos;
+
+        if (!isInstiante && transform.position.x <= 0)
+        {
+            isInstiante = true;
+            Instantiate(newBackground, pivot.position, Quaternion.identity);
+        }
     }
 }

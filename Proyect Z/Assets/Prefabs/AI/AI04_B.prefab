@@ -668,7 +668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d98fd8cd03123ec4bb857f289b955360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 150
+  health: 120
   oper: {fileID: 6564711419812719669, guid: 9b78ba8b1eda8554eb33ed7e4cb8bc90, type: 3}
   puObj:
   - {fileID: 6982403836912231047, guid: 6af04674d798a59459b704feb2423235, type: 3}
@@ -693,7 +693,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 38257330f8a903b4eb74482a03e431e3, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.08
   m_Pitch: 1
   Loop: 1
   Mute: 0
