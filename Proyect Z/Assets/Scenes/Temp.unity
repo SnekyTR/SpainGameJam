@@ -282,9 +282,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8663754357501640600, guid: 54c4da499f0b5e84d9d044b4c5d0495f, type: 3}
-      propertyPath: m_AnchoredPosition.y
+    - target: {fileID: 217064358, guid: 54c4da499f0b5e84d9d044b4c5d0495f, type: 3}
+      propertyPath: m_text
+      value: You defeated the boss of this phase
+      objectReference: {fileID: 0}
+    - target: {fileID: 411127904, guid: 54c4da499f0b5e84d9d044b4c5d0495f, type: 3}
+      propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1790508555, guid: 54c4da499f0b5e84d9d044b4c5d0495f, type: 3}
+      propertyPath: m_text
+      value: Your SpaceShip was destroyed in combat
       objectReference: {fileID: 0}
     - target: {fileID: 8663754358920747072, guid: 54c4da499f0b5e84d9d044b4c5d0495f, type: 3}
       propertyPath: m_Name
