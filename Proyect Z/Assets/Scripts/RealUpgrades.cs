@@ -10,7 +10,7 @@ public class RealUpgrades : MonoBehaviour
     public ScriptableObject upgradeSelected1;
     public ScriptableObject upgradeSelected2;
     private GameObject upgrade1;
-    private GameObject upgrade2;
+    [SerializeField]private GameObject upgrade2;
     private bool clicked1;
     private bool clicked2;
     private Image upgradeImage1;
@@ -26,7 +26,6 @@ public class RealUpgrades : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        
         bool ESP;
         upgradeImage1 = GameObject.Find("Upgrade1Selected").GetComponent<Image>();
         if (GameObject.Find("Upgrade2Selected"))
@@ -68,10 +67,6 @@ public class RealUpgrades : MonoBehaviour
     void Start()
     {
         upgrade1 = GameObject.Find("Upgrade1");
-        if (GameObject.Find("Upgrade2"))
-        {
-            upgrade2 = GameObject.Find("Upgrade2");
-        }
         
 
         shipsSelector = GameObject.Find("SpaceShipZone").GetComponent<ShipsSelector>();
@@ -82,8 +77,7 @@ public class RealUpgrades : MonoBehaviour
     {
         if (progressionNumber == 1)
         {
-            GameObject upgrade1 = gameObject.transform.GetChild(0).gameObject;
-            upgrade1.SetActive(true);
+            BossDefeated();
         }
     }
     public void UpgradeButton(int i)

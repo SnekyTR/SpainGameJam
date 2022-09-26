@@ -1,19 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Progression : MonoBehaviour
 {
     [HideInInspector]
     public int progress;
-    private UpgradesMenu upgradesMenu;
+    private RealUpgrades upgradesMenu;
     private void Awake()
     {
-        upgradesMenu = GameObject.Find("Upgrades").GetComponent<UpgradesMenu>();
-        if(System.IO.File.Exists(Application.persistentDataPath + "/progression.data")){
-            LoadProgression();
-            
+        DontDestroyOnLoad(this);
+        if (GameObject.Find("Upgrades"))
+        {
+            upgradesMenu = GameObject.Find("Upgrades").GetComponent<RealUpgrades>();
         }
+        
     }
     private void LoadProgression()
     {

@@ -18,4 +18,4 @@ MonoBehaviour:
   speed: 0
   attackSpeed: 2
   selected: 0
-  artwork: {fileID: 21300000, guid: b1487fd8c4d1a4193a036cbc5cf81bc3, type: 3}
+  artwork: {fileID: 21300000, guid: 0387054b082bb48b288527af5ce34c02, type: 3}

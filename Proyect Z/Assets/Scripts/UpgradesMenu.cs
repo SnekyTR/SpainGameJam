@@ -22,14 +22,7 @@ public class UpgradesMenu : MonoBehaviour
         shipsSelector = GameObject.Find("SpaceShipZone").GetComponent<ShipsSelector>();
         
     }
-    public void GetProgression(int progressionNumber)
-    {
-        if(progressionNumber == 1)
-        {
-            GameObject upgrade1 = gameObject.transform.GetChild(0).gameObject;
-            upgrade1.SetActive(true);
-        }
-    }
+    
     public void WeaponButton(int i)
     {
         if(i == 1)

@@ -31,8 +31,8 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public GameObject player;
 
-    [HideInInspector] public float extraDmg = 1; 
-    [HideInInspector] public float extraVel = 1; 
+    [HideInInspector] public float extraDmg = 1;
+    [HideInInspector] public float extraVel = 1;
     [HideInInspector] public float extraTime = 1;
 
     public bool isEnd;
@@ -41,11 +41,19 @@ public class GameManager : MonoBehaviour
 
     public GameObject ai04Generator, aiGenerator;
 
+    private Progression progres;
+
+    public bool tempp;
     private void Awake()
     {
+        Time.timeScale = 1;
+        if (GameObject.Find("GameSaver"))
+        {
+            progres = GameObject.Find("GameSaver").GetComponent<Progression>();
+        }
         //cargar datos de shipName y weaponName
         LoadShips();
-        if(shipName == 0)
+        if (shipName == 0)
         {
             player = Instantiate(ships[0].gameObject, transform.position, Quaternion.identity);
         }
@@ -58,7 +66,7 @@ public class GameManager : MonoBehaviour
             player = Instantiate(ships[2].gameObject, transform.position, Quaternion.identity);
         }
 
-        if(weaponName == 0)
+        if (weaponName == 0)
         {
             Instantiate(weapons[0].gameObject, transform.position, Quaternion.identity, player.transform);
         }
@@ -123,16 +131,19 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-
+        if (tempp)
+        {
+            FinishGame();
+        }
     }
     public void LoadShips()
     {
-        /*ShipsData data = SaveSystem.LoadShips();
+        ShipsData data = SaveSystem.LoadShips();
 
         shipName = data.shipName;
         weaponName = data.weapon;
         upgrade01 = data.upgrade1;
-        upgrade02 = data.upgrade2;*/
+        upgrade02 = data.upgrade2;
     }
     private void FixedUpdate()
     {
@@ -163,11 +174,11 @@ public class GameManager : MonoBehaviour
 
     public void SetEnergy(int e)
     {
-        if(e > 200)
+        if (e > 200)
         {
             e = 200;
         }
-        else if(e < 0)
+        else if (e < 0)
         {
             e = 0;
         }
@@ -176,15 +187,15 @@ public class GameManager : MonoBehaviour
 
         energyTxt.text = energy.ToString();
 
-        if(energy <= 100)
+        if (energy <= 100)
         {
             energyImg.fillAmount = ((int)energy / 100f);
 
-            if(energy == 100)
+            if (energy == 100)
             {
                 energyImg.color = color01;
             }
-            else if(energy >= 50)
+            else if (energy >= 50)
             {
                 energyImg.color = color02;
             }
@@ -214,7 +225,8 @@ public class GameManager : MonoBehaviour
     public void FinishGame()
     {
         Time.timeScale = 0;
-
+        progres.progress = 1;
+        SaveSystem.SaveProgression(progres);
         winPanel.SetActive(true);
     }
 
@@ -227,11 +239,11 @@ public class GameManager : MonoBehaviour
 
     public void SetPU(int i)
     {
-        if(i == 1)
+        if (i == 1)
         {
             puR.sprite = puImgs[0];
         }
-        else if(i == 2)
+        else if (i == 2)
         {
             puR.sprite = puImgs[1];
         }
@@ -262,12 +274,14 @@ public class GameManager : MonoBehaviour
     }
 
     public void ReturnToMain()
-    {
+    { 
+        Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
 
     public void Retry()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(1);
     }
 }
