@@ -341,6 +341,7 @@ public class ShipsSelector : MonoBehaviour
             switch (actualUpgrade.weapName)
             {
                 case "Upgrade01":
+                    upgr2 = 0;
                     selectedShip.upgrade2 = 0;
                     for (int i = 0; i < hp.Length; i++)
                     {
@@ -352,6 +353,7 @@ public class ShipsSelector : MonoBehaviour
                     }
                     break;
                 case "Upgrade02":
+                    upgr2 = 1;
                     selectedShip.upgrade2 = 1;
                     for (int i = 0; i < dmg.Length; i++)
                     {
@@ -363,6 +365,7 @@ public class ShipsSelector : MonoBehaviour
                     }
                     break;
                 case "Upgrade03":
+                    upgr2 = 2;
                     selectedShip.upgrade2 = 2;
                     for (int i = 0; i < speed.Length; i++)
                     {
@@ -374,9 +377,11 @@ public class ShipsSelector : MonoBehaviour
                     }
                     break;
                 case "Upgrade04":
+                    upgr2 = 3;
                     selectedShip.upgrade2 = 3;
                     break;
                 case "Upgrade05":
+                    upgr2 = 4;
                     selectedShip.upgrade2 = 4;
                     break;
             }
@@ -410,17 +415,6 @@ public class ShipsSelector : MonoBehaviour
                 }
                 break;
             case "Upgrade03":
-                for (int i = 0; i < attackSpeed.Length; i++)
-                {
-                    if (!attackSpeed[i].activeInHierarchy)
-                    {
-                        i--;
-                        attackSpeed[i].SetActive(false);
-                        break;
-                    }
-                }
-                break;
-            case "Upgrade04":
                 for (int i = 0; i < speed.Length; i++)
                 {
                     if (!speed[i].activeInHierarchy)
@@ -430,6 +424,12 @@ public class ShipsSelector : MonoBehaviour
                         break;
                     }
                 }
+                break;
+            case "Upgrade04":
+                
+                break;
+            case "Upgrade05":
+
                 break;
         }
     }

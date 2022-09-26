@@ -50,11 +50,11 @@ public class UpgradesMenu : MonoBehaviour
             }
             else
             {
-                LeanTween.move(weapon1.transform.GetChild(0).gameObject, weapon1.transform.GetChild(6).position, 0.5f);
-                LeanTween.move(weapon1.transform.GetChild(1).gameObject, weapon1.transform.GetChild(7).position, 0.5f);
-                LeanTween.move(weapon1.transform.GetChild(2).gameObject, weapon1.transform.GetChild(8).position, 0.5f);
-                LeanTween.move(weapon1.transform.GetChild(3).gameObject, weapon1.transform.GetChild(9).position, 0.5f);
-                LeanTween.move(weapon1.transform.GetChild(4).gameObject, weapon1.transform.GetChild(10).position, 0.5f);
+                LeanTween.move(weapon1.transform.GetChild(0).gameObject, weapon1.transform.GetChild(5).position, 0.5f);
+                LeanTween.move(weapon1.transform.GetChild(1).gameObject, weapon1.transform.GetChild(5).position, 0.5f);
+                LeanTween.move(weapon1.transform.GetChild(2).gameObject, weapon1.transform.GetChild(5).position, 0.5f);
+                LeanTween.move(weapon1.transform.GetChild(3).gameObject, weapon1.transform.GetChild(5).position, 0.5f);
+                LeanTween.move(weapon1.transform.GetChild(4).gameObject, weapon1.transform.GetChild(5).position, 0.5f);
                 
                 weapon1.transform.GetChild(0).gameObject.SetActive(false);
                 weapon1.transform.GetChild(1).gameObject.SetActive(false);
