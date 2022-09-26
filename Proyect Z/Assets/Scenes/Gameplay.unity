@@ -800,7 +800,7 @@ MonoBehaviour:
   - {fileID: 582273176}
   ai04_B: {fileID: 6746754846271514117, guid: 9786c0cdcf2ea5e43932785e0896b180, type: 3}
   ai04_R: {fileID: 4549951049215335531, guid: 8db38abca96a305409dcd8fc7dfa2096, type: 3}
-  reload: 5
+  reload: 4
 --- !u!4 &436361682
 Transform:
   m_ObjectHideFlags: 0
@@ -3348,7 +3348,7 @@ MonoBehaviour:
   - {fileID: 1780227933359302327, guid: f78a8463d5573964fa6a68244e53d6ff, type: 3}
   - {fileID: 6791354890482968625, guid: 26d943f8ee76ac949a30d764b22e5a18, type: 3}
   - {fileID: 4586739925839119975, guid: 49e51068f692f5943a84a225da4a87cb, type: 3}
-  reload: 8
+  reload: 6
 --- !u!4 &2044322919
 Transform:
   m_ObjectHideFlags: 0

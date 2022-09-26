@@ -68,7 +68,7 @@ public class AILife : MonoBehaviour
             {
                 int rnd = Random.Range(0, 100);
 
-                if (rnd <= 40)
+                if (rnd <= 50)
                 {
                     InstianteOperation();
                 }
